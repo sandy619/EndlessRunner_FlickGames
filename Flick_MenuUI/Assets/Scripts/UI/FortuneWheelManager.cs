@@ -20,10 +20,14 @@ public class FortuneWheelManager : MonoBehaviour
     public int PreviousCoinsAmount;		// For wasted coins animation
 
     //daily timer
-    int dailyTimer=5;  //in seconds
+    int dailyTimer=10;  //in seconds
     DateTime TimeOfNextSpin;
     bool dailyCooldownComplete;
-    
+
+
+    //COOLDOWN TEXT
+    [SerializeField] Text cooldownText;
+    TimeSpan difference;
     
     private void Awake ()
     {
@@ -31,6 +35,7 @@ public class FortuneWheelManager : MonoBehaviour
         CurrentCoinsText.text = CurrentCoinsAmount.ToString ();
         TimeOfNextSpin = DateTime.Now;
         dailyCooldownComplete = true ;
+        //PlayerPrefs.SetString("NextSpinDate", DateTime.Now.AddSeconds(5).ToString());
     }
 
     public void TurnWheel ()
@@ -143,7 +148,10 @@ public class FortuneWheelManager : MonoBehaviour
             
             
         }
-
+        difference = TimeOfNextSpin - DateTime.Now;
+        if(difference>TimeSpan.Zero)
+        cooldownText.text = difference.Hours.ToString()+":"+difference.Minutes.ToString()+":"+difference.Seconds.ToString();
+        //difference.Hours.ToString();
         
 
         if (!_isStarted)
@@ -171,6 +179,8 @@ public class FortuneWheelManager : MonoBehaviour
     
     	float angle = Mathf.Lerp (_startAngle, _finalAngle, t);
     	Circle.transform.eulerAngles = new Vector3 (0, 0, angle);
+        
+        
     }
 
     private void RewardCoins (int awardCoins)
@@ -204,5 +214,7 @@ public class FortuneWheelManager : MonoBehaviour
     	PreviousCoinsAmount = CurrentCoinsAmount;
     	CurrentCoinsText.text = CurrentCoinsAmount.ToString ();
         //PlayerPrefs.SetInt("score", CurrentCoinsAmount);
+
     }
+
 }
