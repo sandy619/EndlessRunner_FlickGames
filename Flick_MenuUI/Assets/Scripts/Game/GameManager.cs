@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerMovement playerMovement;
 
+    [SerializeField] GameObject GameOver;
+    [SerializeField] Text FinalscoreText;
+    [SerializeField] Text FinaljewelText;
 
     public void IncrementScore()
     {
         score++;
+        PlayerPrefs.SetInt("scorePlayerPrefs", score);
         scoreText.text = "Coins: " + score;
         // Increase the player's speed
         playerMovement.forwardSpeed += playerMovement.speedIncreasePerPoint;
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void IncrementJewel()
     {
         jewel++;
+        PlayerPrefs.SetInt("jewelPlayerPrefs", jewel);
         jewelText.text = "Jewel: " + jewel;
         // Increase the player's speed
         playerMovement.forwardSpeed += playerMovement.speedIncreasePerPoint;
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
+        FinalscoreText.text = "Coins collected     :" + score;
+        FinaljewelText.text = "Jewels collected   :" + jewel;
     }
 }

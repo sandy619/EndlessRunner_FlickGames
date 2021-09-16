@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     float HorizontalInput;
     //[SerializeField] GameObject achievment;
     [SerializeField] public Text Distance;
+    [SerializeField] public Text FinalDistance;
+    [SerializeField] GameObject GameOver;
+
+    public int distance=0;
 
     public float speedIncreasePerPoint = 0.5f;
     // Start is called before the first frame update
@@ -42,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
             Die();
         }
 
-
+        distance = Mathf.RoundToInt((this.transform.position.z) + 7);
+        PlayerPrefs.SetInt("distancePlayerPrefs", distance);
         Distance.text = "Distance : " + Mathf.RoundToInt((this.transform.position.z)+7).ToString()+"m";
        
         //if(GameManager.inst.score >=10 && GameManager.inst.score <= 12)
@@ -66,9 +71,12 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + GameManager.inst.score);
         PlayerPrefs.SetInt("jewel", PlayerPrefs.GetInt("jewel") + GameManager.inst.jewel);
 
+        FinalDistance.text = "Distance Travelled: " + Mathf.RoundToInt((this.transform.position.z) + 7).ToString() + "m"; 
         // Restart the game
         //Invoke("Restart", 1);
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        GameOver.SetActive(true);
+
     }
 
     void Restart()
