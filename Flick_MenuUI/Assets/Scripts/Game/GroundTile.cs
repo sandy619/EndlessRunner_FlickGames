@@ -8,6 +8,9 @@ public class GroundTile : MonoBehaviour
     GameObject obstaclePrefab;
     [SerializeField]
     GameObject coinPrefab;
+    [SerializeField]
+    GameObject jewelPrefab;
+
 
     private void Start()
     {
@@ -41,6 +44,16 @@ public class GroundTile : MonoBehaviour
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
     }
+    public void SpawnJewel()
+    {
+        int jewelToSpawn = 1;
+        for (int i = 0; i < jewelToSpawn; i++)
+        {
+            GameObject temp = Instantiate(jewelPrefab, transform);
+            temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        }
+    }
+
 
     Vector3 GetRandomPointInCollider(Collider collider)
     {

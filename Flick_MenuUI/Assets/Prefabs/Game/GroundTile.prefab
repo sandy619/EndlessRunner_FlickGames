@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 1568179289808184320, guid: 991c4a4055c21874f988a7592b26cbed, type: 3}
   coinPrefab: {fileID: 9170100703911273043, guid: d8ac9f1fd4009294c94c2caa16d425d7, type: 3}
+  jewelPrefab: {fileID: 2300019555613118218, guid: 75ba4e1801943a549b70da35e39b5611, type: 3}
 --- !u!1 &7189405413478895300
 GameObject:
   m_ObjectHideFlags: 0

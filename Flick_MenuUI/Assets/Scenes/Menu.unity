@@ -2320,6 +2320,7 @@ MonoBehaviour:
   ChallengesMenu: {fileID: 734380989}
   StoreMenu: {fileID: 2047494030}
   Coins: {fileID: 1576292172}
+  Jewel: {fileID: 1001435716}
 --- !u!1 &1148932452
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject StoreMenu;
 
     [SerializeField] Text Coins;
+    [SerializeField] Text Jewel;
     void Start()
     {
         Coins.text = PlayerPrefs.GetInt("score").ToString();
+        Jewel.text = PlayerPrefs.GetInt("jewel").ToString();
     }
 
     // Update is called once per frame

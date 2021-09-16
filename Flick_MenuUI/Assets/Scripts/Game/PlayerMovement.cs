@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         //    PlayerPrefs.SetInt("score", GameManager.inst.score);
         //}
         PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + GameManager.inst.score);
+        PlayerPrefs.SetInt("jewel", PlayerPrefs.GetInt("jewel") + GameManager.inst.jewel);
 
         // Restart the game
         //Invoke("Restart", 1);

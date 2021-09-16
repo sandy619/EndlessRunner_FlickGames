@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour
 {
 
     public int score;
+    public int jewel;
     public static GameManager inst;
 
     [SerializeField] Text scoreText;
+    [SerializeField] Text jewelText;
 
     [SerializeField] PlayerMovement playerMovement;
 
@@ -22,6 +24,14 @@ public class GameManager : MonoBehaviour
         playerMovement.forwardSpeed += playerMovement.speedIncreasePerPoint;
     }
 
+    public void IncrementJewel()
+    {
+        jewel++;
+        jewelText.text = "Jewel: " + jewel;
+        // Increase the player's speed
+        playerMovement.forwardSpeed += playerMovement.speedIncreasePerPoint;
+    }
+
     private void Awake()
     {
         inst = this;
@@ -30,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score = 0;
+        jewel = 0;
     }
 
     private void Update()
