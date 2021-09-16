@@ -54,10 +54,12 @@ public class PlayerMovement : MonoBehaviour
     {
         
         isAlive = false;
-        if (PlayerPrefs.GetInt("score") < GameManager.inst.score)
-        {
-            PlayerPrefs.SetInt("score", GameManager.inst.score);
-        }
+        //if (PlayerPrefs.GetInt("score") < GameManager.inst.score)
+        //{
+        //    PlayerPrefs.SetInt("score", GameManager.inst.score);
+        //}
+        PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + GameManager.inst.score);
+
         // Restart the game
         //Invoke("Restart", 1);
         SceneManager.LoadScene(0);

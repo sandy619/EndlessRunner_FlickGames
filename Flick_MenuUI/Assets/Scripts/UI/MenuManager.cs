@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,15 +11,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject DailyRewardsMenu;
     [SerializeField] GameObject ChallengesMenu;
     [SerializeField] GameObject StoreMenu;
+
+    [SerializeField] Text Coins;
     void Start()
     {
-        
+        Coins.text = PlayerPrefs.GetInt("score").ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Coins.text = PlayerPrefs.GetInt("score").ToString();
     }
     public void PlayButton()
     {

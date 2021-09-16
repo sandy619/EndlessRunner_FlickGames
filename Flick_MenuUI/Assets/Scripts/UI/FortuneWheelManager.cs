@@ -15,12 +15,12 @@ public class FortuneWheelManager : MonoBehaviour
     public GameObject Circle; 			// Rotatable Object with rewards
     public Text CoinsDeltaText; 		// Pop-up text with wasted or rewarded coins amount
     public Text CurrentCoinsText; 		// Pop-up text with wasted or rewarded coins amount
-    public int TurnCost = 300;			// How much coins user waste when turn whe wheel
+    public int TurnCost = 0;			// How much coins user waste when turn whe wheel
     public int CurrentCoinsAmount = 1000;	// Started coins amount. In your project it can be set up from CoinsManager or from PlayerPrefs and so on
     public int PreviousCoinsAmount;		// For wasted coins animation
 
     //daily timer
-    int dailyTimer=1*60;  //in seconds
+    int dailyTimer=5;  //in seconds
     DateTime TimeOfNextSpin;
     bool dailyCooldownComplete;
     
@@ -60,8 +60,8 @@ public class FortuneWheelManager : MonoBehaviour
                 CurrentCoinsAmount -= TurnCost;
 
                 // Show wasted coins
-                CoinsDeltaText.text = "-" + TurnCost;
-                CoinsDeltaText.gameObject.SetActive(true);
+                //CoinsDeltaText.text = "-" + TurnCost;
+                //CoinsDeltaText.gameObject.SetActive(true);
 
                 // Animate coins
                 StartCoroutine(HideCoinsDelta());
@@ -178,12 +178,13 @@ public class FortuneWheelManager : MonoBehaviour
         CurrentCoinsAmount += awardCoins;
         CoinsDeltaText.text = "+" + awardCoins;
         CoinsDeltaText.gameObject.SetActive (true);
+        PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + awardCoins);
         StartCoroutine (UpdateCoinsAmount ());
     }
 
     private IEnumerator HideCoinsDelta ()
     {
-        yield return new WaitForSeconds (1f);
+        yield return new WaitForSeconds (10f);
 	CoinsDeltaText.gameObject.SetActive (false);
     }
 
@@ -202,5 +203,6 @@ public class FortuneWheelManager : MonoBehaviour
     
     	PreviousCoinsAmount = CurrentCoinsAmount;
     	CurrentCoinsText.text = CurrentCoinsAmount.ToString ();
+        //PlayerPrefs.SetInt("score", CurrentCoinsAmount);
     }
 }

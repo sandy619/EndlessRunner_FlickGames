@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        score = 0;
     }
 
     private void Update()
