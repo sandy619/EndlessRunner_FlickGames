@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     float HorizontalInput;
     //[SerializeField] GameObject achievment;
+    [SerializeField] public Text Distance;
 
     public float speedIncreasePerPoint = 0.5f;
     // Start is called before the first frame update
@@ -40,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
             Die();
         }
 
+
+        Distance.text = "Distance : " + Mathf.RoundToInt((this.transform.position.z)+7).ToString()+"m";
+       
         //if(GameManager.inst.score >=10 && GameManager.inst.score <= 12)
         //{
         //    achievment.SetActive(true);
