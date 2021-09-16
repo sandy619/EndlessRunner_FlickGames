@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Text Jewel;
     void Start()
     {
+        //PlayerPrefs.SetInt("jewel", 20);
+        //PlayerPrefs.SetInt("score", 5000);
         Coins.text = PlayerPrefs.GetInt("score").ToString();
         Jewel.text = PlayerPrefs.GetInt("jewel").ToString();
     }
@@ -24,6 +26,7 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         Coins.text = PlayerPrefs.GetInt("score").ToString();
+        Jewel.text = PlayerPrefs.GetInt("jewel").ToString();
     }
     public void PlayButton()
     {
@@ -54,5 +57,6 @@ public class MenuManager : MonoBehaviour
     {
         StoreMenu.SetActive(true);
     }
+
 
 }
